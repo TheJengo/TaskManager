@@ -98,29 +98,5 @@ namespace Api.Controllers
             }
         }
 
-        [HttpDelete]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(typeof(string), 400)]
-        public async Task<IActionResult> Delete([FromBody] params TaskType[] taskTypes)
-        {
-            try
-            {
-                var deleteResult = await _taskTypeService.Delete(taskTypes);
-
-                if (deleteResult.Success)
-                {
-                    return StatusCode(StatusCodes.Status200OK);
-                }
-
-                return StatusCode(StatusCodes.Status400BadRequest, deleteResult.Message);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-
-                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
-            }
-        }
-
     }
 }
