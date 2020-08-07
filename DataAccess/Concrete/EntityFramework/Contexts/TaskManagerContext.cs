@@ -83,6 +83,18 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
                    Id = (int)TaskScheduleType.Monthly,
                    Name = TaskScheduleType.Monthly,
                });
+
+            modelBuilder.Entity<OperationClaim>().HasData(
+               new OperationClaim
+               {
+                   Id = 1,
+                   Name = "Admin",
+               },
+               new OperationClaim
+               {
+                   Id = 2,
+                   Name = "User",
+               });
         }
 
         public virtual DbSet<User> Users { get; set; }
